@@ -1,7 +1,7 @@
 [package]
 name = "slint-yolov8-demo"
-version = "0.1.0"
-authors = ["Daogang Tang <daogangtang@gmail.com>"]
+version = "0.1.1"
+authors = ["Daogang Tang <daogangtang@gmail.com>","AIyou9"]
 edition = "2021"
 build = "build.rs"
 
@@ -11,20 +11,29 @@ build = "build.rs"
 native-dialog = "0.7.0"
 slint = "1.0"
 
-anyhow = "1.0.75"
-candle-core = "0.3.1"
-candle-nn = "0.3.1"
-candle-transformers = "0.3.1"
+anyhow = "1.0.82"
+candle = { package = "candle-core", version = "0.8.0" }
+candle-nn = {  version = "0.8.0" }
+candle-transformers = {  version = "0.8.0" }
 #clap = "4.4.10"
+#clap = { version = "4.5.4", features = ["derive"] }
 hf-hub = "0.3.2"
+#image = "0.24.7"
 image = "0.24.7"
+#image = { version = "0.25.5", default-features = false, features = ["jpeg", "png"] }
 imageproc = "0.23.0"
+#imageproc = { version = "0.25.0", default-features = false }
 rusttype = "0.9.3"
-tokenizers = "0.15.0"
+#tokenizers = "0.15.0"
+tokenizers = "0.21.0"
 tracing = "0.1.40"
-tracing-chrome = "0.7.1"
+#tracing-chrome = "0.7.1"
+tracing-chrome = "0.7.2"
 tracing-subscriber = "0.3.18"
-
+#addition packgare
+ab_glyph = "0.2.25"
+serde_plain = "1.0.2"
+serde_json = "1.0.99"
 
 [build-dependencies]
 slint-build = "1.0"

@@ -8,8 +8,8 @@ mod model;
 use model::{Multiples, YoloV8, YoloV8Pose};
 mod coco_classes;
 
-use candle_core::utils::{cuda_is_available, metal_is_available};
-use candle_core::{DType, Device, IndexOp, Result, Tensor};
+use candle::utils::{cuda_is_available, metal_is_available};
+use candle::{DType, Device, IndexOp, Result, Tensor};
 use candle_nn::{Module, VarBuilder};
 use candle_transformers::object_detection::{non_maximum_suppression, Bbox, KeyPoint};
 use image::DynamicImage;
@@ -176,7 +176,7 @@ pub fn report_pose(
     let pred = pred.to_device(&Device::Cpu)?;
     let (pred_size, npreds) = pred.dims2()?;
     if pred_size != 17 * 3 + 4 + 1 {
-        candle_core::bail!("unexpected pred-size {pred_size}");
+        candle::bail!("unexpected pred-size {pred_size}");
     }
     let mut bboxes = vec![];
     // Extract the bounding boxes for which confidence is above the threshold.
@@ -405,7 +405,7 @@ pub fn run<T: Task>(args: Args) -> anyhow::Result<String> {
         let mut image_name = std::path::PathBuf::from(image_name);
         let original_image = image::io::Reader::open(&image_name)?
             .decode()
-            .map_err(candle_core::Error::wrap)?;
+            .map_err(candle::Error::wrap)?;
         let (width, height) = {
             let w = original_image.width() as usize;
             let h = original_image.height() as usize;
