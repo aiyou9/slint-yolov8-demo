@@ -9,7 +9,7 @@ build = "build.rs"
 
 [dependencies]
 native-dialog = "0.7.0"
-slint = "1.0"
+slint = "1.9.1"
 
 anyhow = "1.0.82"
 candle = { package = "candle-core", version = "0.8.0" }
